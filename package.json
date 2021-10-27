@@ -1,0 +1,20 @@
+{
+  "name": "assignment4",
+  "version": "1.0.0",
+  "description": "Schedule Management System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vikram & Rhenan",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.11.1"
+  }
+}
