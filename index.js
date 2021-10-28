@@ -12,6 +12,12 @@ const PORT = process.env.PORT || 4000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
+app.use(express.static('public'))
+app.set('view engine', 'ejs')
+
+//ROUTES
+
+app.use
 
 
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`))
