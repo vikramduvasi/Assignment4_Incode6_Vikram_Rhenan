@@ -14,4 +14,9 @@ app.use(morgan('dev'));
 // set ejs as template engine
 app.set('view engine', 'ejs');
 
+// Login page
+app.get('/', (req, res) => {
+  res.render('pages/login');
+});
+
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
