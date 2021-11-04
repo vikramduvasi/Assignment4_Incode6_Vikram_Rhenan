@@ -16,5 +16,5 @@ app.set('view engine', 'ejs');
 
 // Login page
 const loginRouter = require('./routes/login');
-app.use('/login', loginRouter);
+app.use('/', loginRouter);
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
