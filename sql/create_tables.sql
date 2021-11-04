@@ -1,3 +1,24 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(60) NOT NULL
+);
+
+DROP TABLE IF EXISTS schedules;
+
+CREATE TABLE IF NOT EXISTS schedules (
+    id SERIAL PRIMARY KEY,
+    user_id VARCHAR NOT NULL,
+    day VARCHAR(60) NOT NULL,
+    start_at TIMESTAMPTZ NOT NULL,
+    end_at TIMESTAMPTZ NOT NULL
+);
+
+
 -- -- create user table 
 -- -- create schedule table
 
