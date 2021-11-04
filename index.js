@@ -15,8 +15,6 @@ app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 
 // Login page
-app.get('/', (req, res) => {
-  res.render('pages/login');
-});
-
+const loginRouter = require('./routes/login');
+app.use('/login', loginRouter);
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
