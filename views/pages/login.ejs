@@ -6,6 +6,12 @@ and on failure will show login errors -->
     <%- include('../partials/head') %>
 </head>
 <body>
-    <%- include('../partials/header') %>
+<form>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password</label>
+    <input type="password "id="password" name="password" required>
+    <input type="submit" value="Sign in">
+</form>
 </body>
 </html>
