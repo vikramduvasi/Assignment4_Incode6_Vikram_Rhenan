@@ -10,13 +10,17 @@
 <main>
     <table>
         <tr>
-            <th>Employee</th>
-            <th>Email</th>
+            <th>User ID</th>
+            <th>Day</th>
+            <th>Start at</th>
+            <th>End at</th>
         </tr>
-        <% for (let i=0; i < users.length; i++) {%>
+        <% for (let i=0; i < schedules.length; i++) {%>
             <tr>
-            <td><%=`${users[i].firstname} ${users[i].lastname}`%></td>
-            <td><%=`${users[i].email}`%></td>
+            <td><%=schedules[i].user_id%></td>
+            <td><%=schedules[i].day%></td>
+            <td><%=schedules[i].start_at%></td>
+            <td><%=schedules[i].end_at%></td>
             </tr>
         <%}%>
     </table>
