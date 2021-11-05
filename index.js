@@ -15,7 +15,11 @@ app.use(morgan('dev'));
 // set ejs as template engine
 app.set('view engine', 'ejs');
 
-// Login page
+// Routers
 const loginRouter = require('./routes/login');
+const homeRouter = require('./routes/home');
+
 app.use('/', loginRouter);
+app.use('/home', homeRouter);
+
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
