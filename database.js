@@ -1,7 +1,8 @@
-const pgp = require('pg-promise')()
+const pgp = require('pg-promise')();
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE } = process.env;
 
-const cn = 'postgres://postgres:1234@localhost:5432/mr_coffee'
+const cn = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}`;
 
-const db = pgp(cn)
+const db = pgp(cn);
 
-module.exports = db
+module.exports = db;
