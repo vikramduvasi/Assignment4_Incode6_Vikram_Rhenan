@@ -2,6 +2,10 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const morgan = require('morgan');
 const db = require('./database');
+const loginRouter = require('./routes/login');
+
+const scheduleRouter = require('./routes/home');
+const router = require('./routes/login');
 
 const app = express(); // creating an instance of express
 const PORT = process.env.PORT || 4000;
@@ -15,6 +19,11 @@ app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 
 // Login page
-const loginRouter = require('./routes/login');
+
 app.use('/', loginRouter);
+
+// Home (schedules) Page
+app.use('/home', scheduleRouter)
+
+
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
