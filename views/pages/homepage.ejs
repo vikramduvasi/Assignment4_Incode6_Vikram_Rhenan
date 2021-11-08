@@ -4,27 +4,36 @@
 
 <head>
     <%- include('../partials/head') %>
+        <link rel="stylesheet" href="/styles.css" />
 </head>
 
 <body>
-<main>
-    <table>
-        <tr>
-            <th>User ID</th>
-            <th>Day</th>
-            <th>Start at</th>
-            <th>End at</th>
-        </tr>
-        <% for (let i=0; i < schedules.length; i++) {%>
+    <main>
+        <table>
             <tr>
-            <td><%=schedules[i].user_id%></td>
-            <td><%=schedules[i].day%></td>
-            <td><%=schedules[i].start_at%></td>
-            <td><%=schedules[i].end_at%></td>
+                <th>User ID</th>
+                <th>Day</th>
+                <th>Start at</th>
+                <th>End at</th>
             </tr>
-        <%}%>
-    </table>
-</main>
+            <% for (let i=0; i < schedules.length; i++) {%>
+                <tr>
+                    <td>
+                        <%=schedules[i].user_id%>
+                    </td>
+                    <td>
+                        <%=schedules[i].day%>
+                    </td>
+                    <td>
+                        <%=schedules[i].start_at%>
+                    </td>
+                    <td>
+                        <%=schedules[i].end_at%>
+                    </td>
+                </tr>
+                <%}%>
+        </table>
+    </main>
 </body>
 
 </html>

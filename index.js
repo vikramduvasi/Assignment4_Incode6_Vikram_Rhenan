@@ -15,12 +15,19 @@ app.use(morgan('dev'));
 // set ejs as template engine
 app.set('view engine', 'ejs');
 
+//set Static folder
+app.use(express.static('public'))
+
 
 // Routers
 const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/home');
+const userRouter = require('./routes/users');
+const errorRouter = require('./routes/error');
 
 app.use('/', loginRouter);
 app.use('/home', homeRouter);
+app.use('/users', userRouter);
+app.use('*', errorRouter);
 
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
