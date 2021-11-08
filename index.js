@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const morgan = require('morgan');
 
 const app = express(); // creating an instance of express
@@ -10,6 +9,8 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+
+
 
 // set ejs as template engine
 app.set('view engine', 'ejs');
