@@ -14,16 +14,10 @@ nav {
   text-decoration: none;
   color: white;
   width: 90%;
-  height: 15vh;
+  height: 10vh;
   margin: 0 auto;
   font-size: 1.5rem;
   position: sticky;
-}
-
-#login-register {
-  display: flex;
-  justify-content: space-between;
-  /* gap: 2rem; */
 }
 
 ul {
@@ -63,6 +57,7 @@ ul a {
 main {
   width: 80%;
   margin: 0 auto;
+  height: 85vh;
 }
 
 table,
@@ -81,8 +76,13 @@ a {
 }
 
 .login-modal {
+  /* position: absolute; */
   background-color: rgb(255, 255, 255);
-  margin-top: 5rem;
+  border-radius: 25px;
+  /* top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); */
 }
 
 .label-spacing,
