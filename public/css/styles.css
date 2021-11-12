@@ -14,7 +14,7 @@ nav {
   text-decoration: none;
   color: white;
   width: 90%;
-  height: 10vh;
+  height: 8vh;
   margin: 0 auto;
   font-size: 1.5rem;
   position: sticky;
@@ -50,6 +50,7 @@ ul a {
 #mrcoffee-white-logo {
   width: 2.5rem;
   left: 50%;
+  bottom: -25%;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
@@ -57,16 +58,20 @@ ul a {
 main {
   width: 80%;
   margin: 0 auto;
-  height: 85vh;
+  height: 92vh;
 }
 
-table,
-th,
+.round-top-left {
+  border-top-left-radius: 25px;
+}
+
+.round-top-right {
+  border-top-right-radius: 25px;
+}
+
 td {
-  margin: 0 auto;
-  border: 1px solid black;
+  border-top: 1px solid black;
   padding: 1rem;
-  border-collapse: collapse;
   text-align: center;
 }
 
@@ -76,13 +81,8 @@ a {
 }
 
 .login-modal {
-  /* position: absolute; */
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
-  /* top: 50%;
-  left: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%); */
 }
 
 .label-spacing,
@@ -92,6 +92,14 @@ input[type='submit'] {
 
 .input-text {
   font-size: 1rem;
+}
+
+.rounded-borders {
+  border-radius: 25px;
+}
+
+.black-bg {
+  background-color: black;
 }
 
 /* -------------- LOGIN -------------- */
