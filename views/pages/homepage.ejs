@@ -15,6 +15,7 @@
         <table>
             <tr>
                 <th>User ID</th>
+                <th>Name</th>
                 <th>Day</th>
                 <th>Start at</th>
                 <th>End at</th>
@@ -22,7 +23,10 @@
             <% for (let i=0; i < schedules.length; i++) {%>
                 <tr>
                     <td>
-                        <%=schedules[i].user_id%>
+                        <%=schedules[i].id%>
+                    </td>
+                    <td>
+                        <%=`${schedules[i].firstname} ${schedules[i].lastname}`%>
                     </td>
                     <td>
                         <%=schedules[i].day%>
