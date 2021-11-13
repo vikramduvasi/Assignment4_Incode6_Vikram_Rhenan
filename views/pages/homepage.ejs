@@ -8,21 +8,26 @@
 </head>
 
 <body>
+    <div class="background">
     <header>
         <%- include('../partials/header') %>
     </header>
-    <main>
-        <table>
-            <tr>
-                <th>User ID</th>
-                <th>Day</th>
-                <th>Start at</th>
-                <th>End at</th>
+    <main class="w-100 d-flex flex-column align-items-center justify-content-center">
+        <table class="w-75 shadow-lg rounded-borders bg-white">
+            <tr class="p-3 text-center text-white bg-dark">
+                <th class="p-3 label-spacing round-top-left">User ID</th>
+                <th class="p-3 label-spacing">NAME</th>
+                <th class="p-3 label-spacing">DAY</th>
+                <th class="p-3 label-spacing">START AT</th>
+                <th class="p-3 label-spacing round-top-right">END AT</th>
             </tr>
             <% for (let i=0; i < schedules.length; i++) {%>
                 <tr>
                     <td>
-                        <%=schedules[i].user_id%>
+                        <%=schedules[i].id%>
+                    </td>
+                    <td>
+                        <%=`${schedules[i].firstname} ${schedules[i].lastname}`%>
                     </td>
                     <td>
                         <%=schedules[i].day%>
