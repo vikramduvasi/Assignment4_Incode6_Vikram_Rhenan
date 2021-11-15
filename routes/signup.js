@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../database');
+const { redirectToHome } = require('../middleware/redirect');
 const router = express.Router();
 
 //validations
@@ -13,7 +14,7 @@ const isValid = (value, regex) => {
 };
 
 
-router.get('/', (req, res) => {
+router.get('/', redirectToHome, (req, res) => {
   res.render('pages/signup');
 });
 

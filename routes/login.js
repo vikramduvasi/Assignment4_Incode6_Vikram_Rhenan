@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('../database');
 const bcrypt = require('bcryptjs');
+const { redirectToHome } = require('../middleware/redirect');
 const router = express.Router();
 
 //validations
@@ -25,12 +26,12 @@ const cleanEmail = (email) => {
   return email ? email.toLowerCase().trim() : ""
 }
 
-router.get('/', (req, res) => {
+router.get('/', redirectToHome, (req, res) => {
   res.render('pages/login');
 });
 
 
-router.post('/', (req, res) => {
+router.post('/', redirectToHome, (req, res) => {
   const { email, password } = req.body
   const cleanedEmail = cleanEmail(email)
 
@@ -42,6 +43,12 @@ router.post('/', (req, res) => {
 
   //2. does user exist 
 
+  //   $(document).ready(function(){
+  //     $("#myBtn").click(function(){
+  //         $("#myToast").toast("show");
+  //     });
+  // });
+
   db.oneOrNone('SELECT * FROM users WHERE email = $1;', [cleanedEmail])
     .then((user) => {
       if (!user) return res.send("No user with the entered email please enter a valid email")
@@ -49,6 +56,14 @@ router.post('/', (req, res) => {
       //3 if so is password correct?
       const checkPassword = bcrypt.compareSync(password, user.password)
       if (!checkPassword) return res.send("Credentails are not correct")
+      //         if (!checkPassword) return  {
+
+      //   $(document).ready(function(){
+      //     $("#myBtn").click(function(){
+      //         $("#myToast").toast("show");
+      //     });
+      // });
+      //         }
 
       //4 user is valid
       console.log(req.session)
