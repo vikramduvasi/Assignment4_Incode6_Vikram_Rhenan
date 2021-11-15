@@ -3,7 +3,7 @@
 module.exports.redirectToLogin = (req, res, next) => {
     if (!req.session.userId) {
         res.clearCookie('mrcoffee_sid')
-        res.redirect('/login')
+        res.redirect('/')
     } else {
         next()
     }

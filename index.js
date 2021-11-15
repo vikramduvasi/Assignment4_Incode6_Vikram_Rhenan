@@ -35,13 +35,15 @@ const userRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout')
 const errorRouter = require('./routes/error');
+const scheduleRouter = require('./routes/schedules')
 
 
 
 app.use('/signup', signupRouter);
 app.use('/home', homeRouter);
 app.use('/users', userRouter);
-app.use('/logout', logoutRouter)
+app.use('/logout', logoutRouter);
+app.use('/schedules', scheduleRouter);
 app.use('/', loginRouter);
 app.use('*', errorRouter);
 
