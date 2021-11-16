@@ -11,9 +11,8 @@ const db = require('../database');
 router.get('/', (req, res) => {
     db.any('SELECT firstname, lastname, email FROM users;')
         .then((users) => {
-
-            db.any('SELECT * FROM schedules;')
-
+            //  db.any('SELECT * FROM schedules;')
+            db.any('SELECT users.id, firstname, lastname, day, start_at, end_at FROM users INNER JOIN schedules ON users.id = user_id;')
                 .then((schedules) => res.render('pages/employee', { users, schedules }))
                 .catch((err) => console.log(err));
 

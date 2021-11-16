@@ -3,11 +3,17 @@
 
 <head>
     <%- include('../partials/head') %>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
     <div class="background">
         <header>
+
             <nav class="d-flex flex-row justify-content-between align-items-end position-relative">
                 <img id="mrcoffee-white-logo" class="position-absolute shadow-lg" src="/images/mrcoffee-white.png">
                 <p class="mb-0 shadow-lg">Mr. Coffee Schedule App</p>
@@ -16,11 +22,90 @@
                     <a id="register-link" class="shadow-lg" href="/signup">Register</a>
                 </div>    
             </nav>
+
+            <div aria-live="polite" aria-atomic="true" class="position-relative">
+                <!-- Position it: -->
+                <!-- - `.toast-container` for spacing between toasts -->
+                <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+                <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+                <div class="toast-container position-absolute top-0 end-0 p-3 mt-4">
+              
+                  <!-- Then put toasts within -->
+                  <div id="firstname-error" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+                      <strong class="me-auto">Invalid name</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please insert a valid first name
+                    </div>
+                  </div>
+              
+                  <div id="lastname-error" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+                      <strong class="me-auto">Invalid surname</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please insert a valid surname
+                    </div>
+                  </div>
+
+                  <div id="email-invalid" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+                      <strong class="me-auto">Invalid email</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please insert a valid email address
+                    </div>
+                  </div>
+
+                  <div id="password-invalid" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+                      <strong class="me-auto">Invalid password format</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Password requires at least 8 characters, one constter, and one number. No special characters accepted.
+                    </div>
+                  </div>
+
+                  <div id="password-no-match" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+                      <strong class="me-auto">Passwords don't match</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please make sure the entered passwords are the same
+                    </div>
+                  </div>
+
+                  <div id="existent-user" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="red"></rect></svg>
+                      <strong class="me-auto">This email is already in use</strong>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Please enter a different email address
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+
         </header>
+
         <main class="w-100 d-flex flex-column align-items-center justify-content-center">
-            <div class="container w-25 px-5 py-5 mh-100 align-middle shadow-lg overflow-auto login-modal">
+            <div class="container w-25 px-5 py-5 mh-100 align-middle shadow-lg overflow-auto login-modal position-relative">
                 <h1 class="mb-4 text-center">REGISTER</h1>
-                <form class="d-flex flex-column flex-wrap" method="POST">
+                <form id="signup-form" class="d-flex flex-column flex-wrap">
                     <label class="mb-2 label-spacing" for="firstname">First name</label>
                     <input id="firstname" class="mb-2 py-2 px-3 input-text" type="text" name="firstname" required>
                     <label class="mb-2 label-spacing" for="lastname">Last name</label>
@@ -28,14 +113,44 @@
                     <label class="mb-2 label-spacing" for="email">Email</label>
                     <input id="email" class="mb-2 py-2 px-3 input-text" name="email" type="email" required>
                     <label class="mb-2 label-spacing" for="password">Password</label>
-                    <input class="mb-2 py-2 px-3 input-text" type="password " id="password" name="password" required>
+                    <input id="password" class="mb-2 py-2 px-3 input-text" type="password" name="password" required>
                     <label class="mb-2 label-spacing" for="confirmPassword">Confirm password</label>
-                    <input class="mb-2 py-2 px-3 input-text" type="password " id="confirmPassword" name="confirmPassword" required>
+                    <input id="confirmPassword" class="mb-2 py-2 px-3 input-text" type="password" name="confirmPassword" required>
                     <input class="mt-3 py-3 text-white bg-dark" type="submit" value="Submit">
                 </form>
             </div>
         </main>
 </div>
 </body>
+
+<script>
+    $('#signup-form').submit((e) => {
+      e.preventDefault();
+    //   console.log("Submission attempt");
+      const firstname = $("#firstname").val();
+      const lastname = $("#lastname").val();
+      const email = $("#email").val();
+      const password = $("#password").val();
+      const confirmPassword = $("#confirmPassword").val();
+      $.ajax({
+        url: "/signup",
+        type: "POST",
+        data: {firstname, lastname, email, password, confirmPassword},
+        success: (data) => {
+          if (data.redirectLogin) {
+            window.location.replace("/");
+          } else if (data) {
+            // console.log(data);
+            const {idSelector, msg} = data;
+            console.log(idSelector, msg);
+            const toastHTMLElement = $(idSelector);
+            const toastElement = new bootstrap.Toast(toastHTMLElement, {
+              delay: 5000,
+            });
+            $(idSelector).toast('show');
+          }
+        }})
+      })
+  </script>
 
 </html>
