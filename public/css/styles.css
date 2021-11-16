@@ -122,16 +122,25 @@ input[type='submit'] {
    /* margin-top: 20px; */
    margin-top:20PX;
    margin-bottom: 20px;
-   background-color: rgb(197, 193, 184);
+   background-color:  rgb(255, 255, 255);
    padding: 20px;
    border-radius: 20px;
-   border-color: rgb(156, 40, 40);
+    }
+
+ h3 {
+   background-color:  black;
+   color: white;
+   border-radius: 5px;
+   text-align: center;
  }
- 
  button {
    margin-top: 20px;
  }
 
+ .btn-schedule {
+   background-color: rgb(143, 130, 105);
+   color: whitesmoke
+ } 
  .employee-table {
    margin-top: 20px;
  }
