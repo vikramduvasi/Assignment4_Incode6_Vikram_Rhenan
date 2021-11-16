@@ -13,20 +13,23 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const { user_id, day, start_at, end_at } = req.body
+    db.none('INSERT INTO schedules(user_id, day, start_at, end_at) VALUES($1, $2, $3, $4);', [user_id, day, start_at, end_at])
 
 
-
-    db.none('INSERT INTO users ( user_id, day, start_at, end_at) VALUES ($1, $2, $3, $4) FROM users INNER JOIN schedules ON users.id = user_id;'
-    [user_id, day, start_at, end_at])
+        // db.any('INSERT INTO schedules ( user_id, day, start_at, end_at) VALUES ($1, $2, $3, $4);'
+        // [user_id, day, start_at, end_at])
         .then(() => {
-            res.send({
-                user_id,
-                day,
-                start_at,
-                end_at
-            })
+            //console.log("abc")
+            // res.send({
+            //     user_id,
+            //     day,
+            //     start_at,
+            //     end_at
+
+            res.redirect('/')
 
         })
+
         .catch((err) => {
             console.log(err)
             res.send(err.message)

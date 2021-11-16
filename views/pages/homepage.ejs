@@ -9,39 +9,39 @@
 
 <body>
     <div class="background">
-    <header>
-        <%- include('../partials/header') %>
-    </header>
-    <main class="w-100 d-flex flex-column align-items-center justify-content-center">
-        <table class="w-75 shadow-lg rounded-borders bg-white">
-            <tr class="p-3 text-center text-white bg-dark">
-                <th class="p-3 label-spacing round-top-left">USER ID</th>
-                <th class="p-3 label-spacing">NAME</th>
-                <th class="p-3 label-spacing">DAY</th>
-                <th class="p-3 label-spacing">START AT</th>
-                <th class="p-3 label-spacing round-top-right">END AT</th>
-            </tr>
-            <% for (let i=0; i < schedules.length; i++) {%>
-                <tr>
-                    <td>
-                        <%=schedules[i].id%>
-                    </td>
-                    <td>
-                        <%=`${schedules[i].firstname} ${schedules[i].lastname}`%>
-                    </td>
-                    <td>
-                        <%=schedules[i].day%>
-                    </td>
-                    <td>
-                        <%=schedules[i].start_at%>
-                    </td>
-                    <td>
-                        <%=schedules[i].end_at%>
-                    </td>
+        <header>
+            <%- include('../partials/header') %>
+        </header>
+        <main class="w-100 d-flex flex-column align-items-center justify-content-center">
+            <table class="w-75 shadow-lg rounded-borders bg-white">
+                <tr class="p-3 text-center text-white bg-dark">
+                    <th class="p-3 label-spacing round-top-left">User ID</th>
+                    <th class="p-3 label-spacing">NAME</th>
+                    <th class="p-3 label-spacing">DAY</th>
+                    <th class="p-3 label-spacing">START AT</th>
+                    <th class="p-3 label-spacing round-top-right">END AT</th>
                 </tr>
-                <%}%>
-        </table>
-    </main>
+                <% for (let i=0; i < schedules.length; i++) {%>
+                    <tr>
+                        <td>
+                            <%=schedules[i].id%>
+                        </td>
+                        <td>
+                            <%=`${schedules[i].firstname} ${schedules[i].lastname}`%>
+                        </td>
+                        <td>
+                            <%=schedules[i].day%>
+                        </td>
+                        <td>
+                            <%=schedules[i].start_at%>
+                        </td>
+                        <td>
+                            <%=schedules[i].end_at%>
+                        </td>
+                    </tr>
+                    <%}%>
+            </table>
+        </main>
 </body>
 
 </html>

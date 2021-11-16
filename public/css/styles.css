@@ -119,10 +119,28 @@ input[type='submit'] {
 /*------------schedule form----------------*/
 
 .schedule_form {
-   width: 50%;
-   margin: auto;
-   background-color: antiquewhite;
+   /* margin-top: 20px; */
+   margin-top:20PX;
+   margin-bottom: 20px;
+   background-color: rgb(197, 193, 184);
    padding: 20px;
    border-radius: 20px;
+   border-color: rgb(156, 40, 40);
  }
  
+ button {
+   margin-top: 20px;
+ }
+
+ .employee-table {
+   margin-top: 20px;
+ }
+ /* .header{
+   position: relative;
+   margin: 20px;
+ } */
+
+ /* .main1{
+   position: relative;
+   margin:20px;
+ }  */

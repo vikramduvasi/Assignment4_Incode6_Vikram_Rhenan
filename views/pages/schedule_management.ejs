@@ -9,11 +9,11 @@
 
 <body>
     <div class="background">
-        <header>
+        <header class="header">
             <%- include('../partials/header') %>
         </header>
         <main class="w-100 d-flex flex-column align-items-center justify-content-center">
-            <form method="POST" action="/schedules" class="schedule_form">
+            <form method="POST" action="/schedules" class="w-75 shadow-lg schedule_form">
                 <div class="form-group">
                     <label for="user_id">User Id</label>
                     <input type="number" class="form-control" id="user_id" name="user_id" required>
@@ -39,7 +39,9 @@
                     <label for="end_at">End Time</label>
                     <input type="text" class="form-control" id="end_at" name="end_at">
                 </div>
-                <button type="submit" class="btn btn-primary">Add New Schedule</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark form-control">Add New Schedule</button>
+                </div>
             </form>
 
             <table class="w-75 shadow-lg rounded-borders bg-white">
