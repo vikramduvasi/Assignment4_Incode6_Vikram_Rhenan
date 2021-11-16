@@ -1,41 +1,72 @@
-<!-- it will list all schedules  -->
+it will list a employee info and its schedules
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <%- include('../partials/head') %>
+        <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-    <header>
-        <%- include('../partials/header') %>
-    </header>
-    <main>
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Password</th>
-            </tr>
-            <% for (let i=0; i < users.length; i++) {%>
-                <tr>
-                    <td>
-                        <%=users[i].firstname%>
-                    </td>
-                    <td>
-                        <%=users[i].lastname%>
-                    </td>
-                    <td>
-                        <%=users[i].email%>
-                    </td>
-                    <td>
-                        <%=users[i].password%>
-                    </td>
+    <div class="background">
+        <header>
+            <%- include('../partials/header') %>
+        </header>
+        <main class="w-100 d-flex flex-column align-items-center justify-content-center">
+
+            <table class="w-75 shadow-lg rounded-borders bg-white">
+                <tr class="p-3 text-center text-white bg-dark">
+                    <th class="p-3 label-spacing round-top-left">FIRSTNAME</th>
+                    <th class="p-3 label-spacing">LASTNAME</th>
+                    <th class="p-3 label-spacing round-top-right">EMAIL</th>
                 </tr>
-                <%}%>
-        </table>
-    </main>
+
+                <% for ( let i=0; i< users.length ; i++){ %>
+                    <tr colspan="2">
+                        <td>
+                            <%= users[i].firstname %>
+                        </td>
+                        <td>
+                            <%= users[i].lastname %>
+                        </td>
+                        <td>
+                            <%= users[i].email %>
+                        </td>
+                    </tr>
+                    <% } %>
+
+            </table>
+
+
+            <table class="w-75 shadow-lg rounded-borders bg-white">
+                <tr class="p-3 text-center text-white bg-dark">
+                    <th class="p-3 label-spacing round-top-left">User ID</th>
+                    <th class="p-3 label-spacing">NAME</th>
+                    <th class="p-3 label-spacing">DAY</th>
+                    <th class="p-3 label-spacing">START AT</th>
+                    <th class="p-3 label-spacing round-top-right">END AT</th>
+                </tr>
+                <% for (let i=0; i < schedules.length; i++) {%>
+                    <tr>
+                        <td>
+                            <%=schedules[i].id%>
+                        </td>
+                        <td>
+                            <%=`${schedules[i].firstname} ${schedules[i].lastname}`%>
+                        </td>
+                        <td>
+                            <%=schedules[i].day%>
+                        </td>
+                        <td>
+                            <%=schedules[i].start_at%>
+                        </td>
+                        <td>
+                            <%=schedules[i].end_at%>
+                        </td>
+                    </tr>
+                    <%}%>
+            </table>
+        </main>
 </body>
 
 </html>
