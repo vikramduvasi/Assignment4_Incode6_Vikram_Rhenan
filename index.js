@@ -30,15 +30,22 @@ app.use(express.static('public'));
 
 // Routers
 const signupRouter = require('./routes/signup');
-const loginRouter = require('./routes/login');
 const homeRouter = require('./routes/home');
 const userRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout')
 const errorRouter = require('./routes/error');
+const scheduleRouter = require('./routes/schedules')
 
-app.use('/', loginRouter);
+
+
 app.use('/signup', signupRouter);
 app.use('/home', homeRouter);
 app.use('/users', userRouter);
+app.use('/logout', logoutRouter);
+app.use('/schedules', scheduleRouter);
+app.use('/', loginRouter);
 app.use('*', errorRouter);
+
 
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));

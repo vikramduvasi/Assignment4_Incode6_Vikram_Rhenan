@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database');
+const { redirectToLogin } = require('../middleware/redirect')
 
 
 
-router.get('/', (req, res) => {
+router.get('/', redirectToLogin, (req, res) => {
     db.any(
         'SELECT users.id, firstname, lastname, day, start_at, end_at FROM users INNER JOIN schedules ON users.id = user_id;'
     )
