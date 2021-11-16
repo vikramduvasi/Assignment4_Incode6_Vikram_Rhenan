@@ -21,27 +21,28 @@ const emailRegex =
 // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 const passwordRegex = /^[^<>]{6,}$/;
 
-
 const cleanEmail = (email) => {
-  return email ? email.toLowerCase().trim() : ""
-}
+  return email ? email.toLowerCase().trim() : '';
+};
 
 router.get('/', redirectToHome, (req, res) => {
   res.render('pages/login');
 });
 
-
 router.post('/', redirectToHome, (req, res) => {
-  const { email, password } = req.body
-  const cleanedEmail = cleanEmail(email)
+  const { email, password } = req.body;
+  const cleanedEmail = cleanEmail(email);
 
-  //1. validate 
+  //1. validate
 
-  if (!email || !password) return res.send("Please enter both email and password")
-  if (!isValid(cleanedEmail, emailRegex)) return res.send("Email is not valid ")
-  if (!isValid(password, passwordRegex)) return res.send("Password is not valid")
+  if (!email || !password)
+    return res.send({ msg: 'Please enter both email and password' });
+  if (!isValid(cleanedEmail, emailRegex))
+    return res.send({ msg: 'Email is not valid' });
+  if (!isValid(password, passwordRegex))
+    return res.send({ msg: 'Password is not valid' });
 
-  //2. does user exist 
+  //2. does user exist
 
   //   $(document).ready(function(){
   //     $("#myBtn").click(function(){
@@ -51,30 +52,32 @@ router.post('/', redirectToHome, (req, res) => {
 
   db.oneOrNone('SELECT * FROM users WHERE email = $1;', [cleanedEmail])
     .then((user) => {
-      if (!user) return res.send("No user with the entered email please enter a valid email")
-
+      if (!user) {
+        return res.send({
+          idSelector: '#wrong-email',
+          msg: 'No user with the entered email please enter a valid email',
+        });
+      }
       //3 if so is password correct?
-      const checkPassword = bcrypt.compareSync(password, user.password)
-      if (!checkPassword) return res.send("Credentails are not correct")
-      //         if (!checkPassword) return  {
-
-      //   $(document).ready(function(){
-      //     $("#myBtn").click(function(){
-      //         $("#myToast").toast("show");
-      //     });
-      // });
-      //         }
+      const checkPassword = bcrypt.compareSync(password, user.password);
+      if (!checkPassword)
+        return res.send({
+          idSelector: '#wrong-password',
+          msg: 'Credentails are not correct',
+        });
 
       //4 user is valid
-      console.log(req.session)
-      req.session.userId = user.id
-      res.redirect('/home') /// here redrect to schedules of that user with userD (/home:)
+      console.log(req.session);
+      req.session.userId = user.id;
+      res.send({
+        redirectHome: true,
+      });
+      // res.redirect('/home'); /// here redrect to schedules of that user with userD (/home:)
     })
-    .catch((err) => {
-      console.log(error)
-      res.send(error.message)
-    })
-
-})
+    .catch((error) => {
+      console.log(error);
+      res.send(error.message);
+    });
+});
 
 module.exports = router;
