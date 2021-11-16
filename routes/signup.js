@@ -8,11 +8,9 @@ const router = express.Router();
 // const validation = require('../middleware/validationMiddleware')
 // const userSchema = require('../validations/uservalidation')
 
-
 const isValid = (value, regex) => {
   return regex.test(value);
 };
-
 
 router.get('/', redirectToHome, (req, res) => {
   res.render('pages/signup');
@@ -34,12 +32,32 @@ router.post('/', (req, res) => {
   const passwordRegex = /^[^<>]{6,}$/;
   // // Sign-up form validation
 
-  if (!isValid(firstname, firstNameRegex)) return res.send('First name is not valid');
-  if (!isValid(lastname, lastNameRegex)) return res.send('Last name is not valid');
-  if (!isValid(cleanedEmail, emailRegex)) return res.send('Email is not valid');
-  if (!isValid(password, passwordRegex)) return res.send('Password is not valid');
+  if (!isValid(firstname, firstNameRegex))
+    return res.send({
+      idSelector: '#firstname-error',
+      msg: 'First name is not valid',
+    });
+  if (!isValid(lastname, lastNameRegex))
+    return res.send({
+      idSelector: '#lastname-error',
+      msg: 'Last name is not valid',
+    });
+  if (!isValid(cleanedEmail, emailRegex))
+    return res.send({
+      idSelector: '#email-invalid',
+      msg: 'Email is not valid',
+    });
+  if (!isValid(password, passwordRegex))
+    return res.send({
+      idSelector: '#password-invalid',
+      msg: 'Password is not valid',
+    });
 
-  if (password !== confirmPassword) return res.send("Passwords don't match");
+  if (password !== confirmPassword)
+    return res.send({
+      idSelector: '#password-no-match',
+      msg: "Passwords don't match",
+    });
 
   // 1. validate! - yup and joi are decent validation packages
 
@@ -50,23 +68,29 @@ router.post('/', (req, res) => {
   // if (req.session.flash.error.length > 0) return res.redirect("/users/register")
 
   // Check if email already exists in database
-  console.log('checking emiail exist')
+  console.log('checking if email exists');
   db.oneOrNone('SELECT email FROM users WHERE email = $1', [cleanedEmail])
     .then((user) => {
-      if (user) return res.send('User already exists');
+      if (user)
+        return res.send({
+          idSelector: '#existent-user',
+          msg: 'User already exists',
+        });
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(password, salt);
       db.none(
         'INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4)',
-        [firstname, lastname, cleanedEmail, hash])
+        [firstname, lastname, cleanedEmail, hash]
+      )
         .then(() => {
-          res.redirect('/');
+          res.send({
+            redirectLogin: true,
+          });
         })
         .catch((error) => {
-          console.log(error)
-          res.send(error.message)
-        })
-
+          console.log(error);
+          res.send(error.message);
+        });
     })
     .catch((err) => {
       console.log(err);
