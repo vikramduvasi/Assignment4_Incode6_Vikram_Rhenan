@@ -4,7 +4,7 @@
 
 <head>
     <%- include('../partials/head') %>
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body>
@@ -14,58 +14,49 @@
         </header>
         <main class="w-100 d-flex flex-column align-items-center justify-content-center">
 
-            <table class="w-75 shadow-lg rounded-borders bg-white employee-table">
+            <table class="w-75 shadow-lg rounded-borders bg-white">
                 <tr class="p-3 text-center text-white bg-dark">
                     <th class="p-3 label-spacing round-top-left">FIRSTNAME</th>
                     <th class="p-3 label-spacing">LASTNAME</th>
                     <th class="p-3 label-spacing round-top-right">EMAIL</th>
                 </tr>
 
-                <% for ( let i=0; i< users.length ; i++){ %>
-                    <tr colspan="2">
+                <% for ( let i=0; i < 1 ; i++){ %>
+                    <tr>
                         <td>
-                            <%= users[i].firstname %>
+                            <%= data[i].firstname %>
                         </td>
                         <td>
-                            <%= users[i].lastname %>
+                            <%= data[i].lastname %>
                         </td>
                         <td>
-                            <%= users[i].email %>
+                            <%= data[i].email %>
                         </td>
                     </tr>
-                    <% } %>
-
+                <% } %>
             </table>
-
 
             <table class="w-75 shadow-lg rounded-borders bg-white employee-table">
                 <tr class="p-3 text-center text-white bg-dark">
-                    <th class="p-3 label-spacing round-top-left">User ID</th>
-                    <th class="p-3 label-spacing">NAME</th>
-                    <th class="p-3 label-spacing">DAY</th>
+                    <th class="p-3 label-spacing round-top-left">DAY</th>
                     <th class="p-3 label-spacing">START AT</th>
                     <th class="p-3 label-spacing round-top-right">END AT</th>
                 </tr>
-                <% for (let i=0; i < schedules.length; i++) {%>
+                <% for (let i=0; i < data.length; i++) {%>
                     <tr>
                         <td>
-                            <%=schedules[i].id%>
+                            <%=data[i].day%>
                         </td>
                         <td>
-                            <%=`${schedules[i].firstname} ${schedules[i].lastname}`%>
+                            <%=data[i].start_at%>
                         </td>
                         <td>
-                            <%=schedules[i].day%>
-                        </td>
-                        <td>
-                            <%=schedules[i].start_at%>
-                        </td>
-                        <td>
-                            <%=schedules[i].end_at%>
+                            <%=data[i].end_at%>
                         </td>
                     </tr>
-                    <%}%>
+                <%}%>
             </table>
+
         </main>
 </body>
 
