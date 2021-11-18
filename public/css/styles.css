@@ -119,15 +119,14 @@ input[type='submit'] {
 /*------------schedule form----------------*/
 
 .schedule_form {
-   /* margin-top: 20px; */
-   margin-top:20PX;
-   margin-bottom: 20px;
-   background-color:  rgb(255, 255, 255);
-   padding: 20px;
-   border-radius: 20px;
-    }
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 20px;
+}
 
- h3 {
+/* h3 {
    background-color:  black;
    color: white;
    border-radius: 5px;
@@ -135,21 +134,21 @@ input[type='submit'] {
  }
  button {
    margin-top: 20px;
- }
+ } */
 
- .btn-schedule {
-   background-color: rgb(143, 130, 105);
-   color: whitesmoke
- } 
- .employee-table {
+.btn-schedule {
+  background-color: rgb(143, 130, 105);
+  color: whitesmoke;
+}
+/*.employee-table {
    margin-top: 20px;
- }
- /* .header{
+ } */
+/* .header{
    position: relative;
    margin: 20px;
  } */
 
- /* .main1{
+/* .main1{
    position: relative;
    margin:20px;
  }  */
