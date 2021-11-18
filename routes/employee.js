@@ -9,7 +9,8 @@ const db = require('../database');
 router.get('/:userId', (req, res) => {
   console.log(req.params.userId);
   db.any(
-    `SELECT users.id, firstname, lastname, email, day, start_at, end_at FROM users INNER JOIN schedules ON users.id = user_id WHERE users.id = ${Number(
+    `SELECT users.id, firstname, lastname, email, day, TO_CHAR(start_at, 'HH12:MI AM') start_at, TO_CHAR(end_at, 'HH12:MI AM
+    ') end_at FROM users INNER JOIN schedules ON users.id = user_id WHERE users.id = ${Number(
       req.params.userId
     )};`
   )
